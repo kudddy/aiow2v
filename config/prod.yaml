@@ -1,5 +1,4 @@
 app:
   directory:
-    vectors_ngrams_lockf: model_hh_fasttext.trainables.vectors_ngrams_lockf.npy
-    vectors_ngrams: model_hh_fasttext.wv.vectors_ngrams.npy
-    model_hh_fasttext: model_hh_fasttext
+    model_path: persistant/w2v/model_hh_fasttext
+    stop_words_path: persistant/stopwords.txt

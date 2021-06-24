@@ -11,6 +11,7 @@ import aiohttp_cors
 from handlers import HANDLERS
 from payloads import AsyncGenJSONListPayload, JsonPayload
 from plugins.w2v import FastTextVectorizer
+from plugins.config import cfg
 
 api_address = "0.0.0.0"
 api_port = 8081
@@ -22,8 +23,6 @@ logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 log.setLevel(logging.DEBUG)
-
-
 
 
 def create_app() -> Application:
@@ -53,7 +52,7 @@ def create_app() -> Application:
 
     # регестрируем w2v
     log.debug('Registering w2v')
-    app['w2v'] = FastTextVectorizer('persistant/w2v/model_hh_fasttext')
+    app['w2v'] = FastTextVectorizer(cfg.app.directory.model_path)
 
     setup_aiohttp_apispec(app=app, title="I SEE YOU API", swagger_path='/')
 
